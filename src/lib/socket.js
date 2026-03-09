@@ -7,9 +7,15 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://friend-chat-website.vercel.app/login"],
+    origin: [
+      "http://localhost:5173",
+      "https://friend-chat-website.vercel.app"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
   },
 });
+
 
 export function getReceiverSocketId(userId) {
   return userSocketMap[userId];
