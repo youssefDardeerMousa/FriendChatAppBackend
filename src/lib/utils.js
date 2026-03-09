@@ -10,7 +10,6 @@ export const generateToken = (userId, res) => {
     // الـ Cookie دي بتتحفظ تلقائيًا في المتصفح وبتتبعت مع كل Request بعد كده للسيرفر.
     maxAge: 7 * 24 * 60 * 60 * 1000, // MS milliseconds
     httpOnly: true, // حماية من هجمات XSS
-    // في الـ production على Vercel لازم نخلي الكوكي cross-site علشان تشتغل بين دومين الـ frontend والـ backend
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     secure: process.env.NODE_ENV === "production",
   });
