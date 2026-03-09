@@ -1,9 +1,4 @@
-﻿
 
-
-
-
-//
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -25,12 +20,11 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
+const io = new Server(server, {
+  cors: {
+    origin: "*"
+  }
+});
 app.get("/", (req, res) => {
   res.send(`
     <!DOCTYPE html>
